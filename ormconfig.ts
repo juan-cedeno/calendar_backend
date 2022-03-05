@@ -1,10 +1,13 @@
-{
+import dotenv from 'dotenv'
+dotenv.config()
+
+module.exports = {
    "type": "mysql",
    "host": "localhost",
-   "port": 3306,
-   "username": "root",
-   "password": "12345678",
-   "database": "calendar",
+   "port": process.env.PORT_DB,
+   "username": process.env.USERNAME,
+   "password": process.env.PASSWORD,
+   "database": process.env.DATABASE,
    "synchronize": true,
    "logging": false,
    "entities": [
