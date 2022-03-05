@@ -1,7 +1,8 @@
 import "reflect-metadata";
 import {createConnection} from "typeorm";
-import dotenv from 'dotenv'
-dotenv.config()
+// import dotenv from 'dotenv'
+// dotenv.config()
+require('dotenv').config()
 import express from 'express'
 import authRouter from "./routers/auth/auth.router";
 import cors from 'cors'
