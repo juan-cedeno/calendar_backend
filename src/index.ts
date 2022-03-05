@@ -21,6 +21,6 @@ app.use('/api/auth' , authRouter)
 app.use('/api/event' , eventRouter)
 
 
-app.listen(process.env.PORT ,() => {
+app.listen(process.env.PORT || 5000 ,() => {
     console.log(process.env.PORT);
 })
