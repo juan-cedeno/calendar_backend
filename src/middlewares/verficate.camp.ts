@@ -10,6 +10,6 @@ export const verificateCamp = (req : Request, res:Response , next:NextFunction) 
             message: error.array()
         })
     }
-
     next()
+
 }

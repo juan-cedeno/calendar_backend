@@ -5,6 +5,7 @@ dotenv.config()
 import express from 'express'
 import authRouter from "./routers/auth/auth.router";
 import cors from 'cors'
+import eventRouter from "./routers/event/event.router";
 
 
 createConnection().then(async connection => {
@@ -17,6 +18,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/api/auth' , authRouter)
+app.use('/api/event' , eventRouter)
 
 
 app.listen(process.env.PORT ,() => {

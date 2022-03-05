@@ -5,6 +5,7 @@ import { Users } from '../../interfaces/User';
 import bcrypts from 'bcryptjs'
 import { generateJwt } from '../../helpers/generate.json.web.token';
 
+
 export const registerUser = async (req: Request<any , any , Users> , res: Response) => {
     const {email,password} = req.body
     try {
@@ -20,15 +21,16 @@ export const registerUser = async (req: Request<any , any , Users> , res: Respon
         const newUser =  getRepository(User).create(req.body)
         const salt = bcrypts.genSaltSync()
         newUser.password = bcrypts.hashSync(password , salt)
-        const result = await getRepository(User).save(newUser)
+        const resultUser = await getRepository(User).save(newUser)
 
-        const token = generateJwt(result.id , result.name)
+        const token = await generateJwt(resultUser.id , resultUser.name)
 
      res.status(201).json({
         ok: true,
-        email: result.email,
-        id: result.id,
-        name: result.name
+        email: resultUser.email,
+        id: resultUser.id,
+        name: resultUser.name,
+        token,
     })
 
     } catch (error) {
